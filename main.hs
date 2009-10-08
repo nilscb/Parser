@@ -18,9 +18,11 @@ run p input = case (parse p "" input) of
                 Right x  -> print x
 
 
+simple::Parser Char
+simple  =  char 'x'
 
-simple :: Parser Char
-simple  = letter
+complex::Parser [Char]
+complex = sepBy simple (char ' ')
 
 openClose :: Parser Char
 openClose = do  char '('
